@@ -9,12 +9,14 @@ public class MasterBehaviour : MonoBehaviour {
     public SnakeBehaviour Snake;
     public static bool isFinish;
     public static bool isPause;
+    public MenuPause menuPause;
 
     void Start () {
         isFinish = false;
         isPause = false;
         score = 0;
         Snake = GameObject.Find("Snake").GetComponent<SnakeBehaviour>();
+        menuPause = GameObject.Find("MenuPause").GetComponent<MenuPause>();
 
         generateFood();
     }
@@ -43,13 +45,30 @@ public class MasterBehaviour : MonoBehaviour {
 
 
     // UI METHODS
+    public void initGame()
+    {
+        
+    }
+
+    public void resetGame()
+    {
+
+    }
+
+    public void goToMainMenu()
+    {
+
+    }
+
     public void pauseGame() {
         MasterBehaviour.isPause = true;
+        menuPause.show();
     }
 
     public void resumeGame()
     {
         MasterBehaviour.isPause = false;
+        menuPause.hide();
     }
 
     public void turnSnake(string newDirection)

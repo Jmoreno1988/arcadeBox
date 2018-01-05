@@ -68,12 +68,23 @@
     <Compile Include="Assets\_Scripts\FloorBehaviour.cs" />
     <Compile Include="Assets\_Scripts\FoodBehaviour.cs" />
     <Compile Include="Assets\_Scripts\GameController.cs" />
+    <Compile Include="Assets\_Scripts\MainMenuScene\Camera.cs" />
+    <Compile Include="Assets\_Scripts\MainMenuScene\ControllerMainMenu.cs" />
+    <Compile Include="Assets\_Scripts\MainMenuScene\UI\ButtonNextGame.cs" />
+    <Compile Include="Assets\_Scripts\MainMenuScene\UI\ButtonPlay.cs" />
+    <Compile Include="Assets\_Scripts\MainMenuScene\UI\Rotate.cs" />
+    <Compile Include="Assets\_Scripts\MainMenuScene\UI\TextButtonPlay.cs" />
     <Compile Include="Assets\_Scripts\Master\MasterBehaviour.cs" />
     <Compile Include="Assets\_Scripts\Snake\SnakeBehaviour.cs" />
     <Compile Include="Assets\_Scripts\Snake\SnakeBody.cs" />
     <Compile Include="Assets\_Scripts\UI\ButtonLeft.cs" />
     <Compile Include="Assets\_Scripts\UI\ButtonMenu.cs" />
+    <Compile Include="Assets\_Scripts\UI\ButtonMenuPauseMainMenu.cs" />
+    <Compile Include="Assets\_Scripts\UI\ButtonMenuPauseReset.cs" />
+    <Compile Include="Assets\_Scripts\UI\ButtonMenuPauseResume.cs" />
     <Compile Include="Assets\_Scripts\UI\ButtonRight.cs" />
+    <Compile Include="Assets\_Scripts\UI\MainMenu\ButtonSnake.cs" />
+    <Compile Include="Assets\_Scripts\UI\MenuPause.cs" />
     <Compile Include="Assets\_Scripts\UI\TextScore.cs" />
     <Compile Include="Assets\_Scripts\Weather\CloudBehaviour.cs" />
   </ItemGroup>
