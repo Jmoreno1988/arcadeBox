@@ -85,6 +85,8 @@
     <Compile Include="Assets\_Scripts\UI\ButtonRight.cs" />
     <Compile Include="Assets\_Scripts\UI\MainMenu\ButtonSnake.cs" />
     <Compile Include="Assets\_Scripts\UI\MenuPause.cs" />
+    <Compile Include="Assets\_Scripts\UI\MenuReady.cs" />
+    <Compile Include="Assets\_Scripts\UI\TextReady.cs" />
     <Compile Include="Assets\_Scripts\UI\TextScore.cs" />
     <Compile Include="Assets\_Scripts\Weather\CloudBehaviour.cs" />
   </ItemGroup>

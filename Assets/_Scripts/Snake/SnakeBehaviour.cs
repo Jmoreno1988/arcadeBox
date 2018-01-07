@@ -29,7 +29,7 @@ public class SnakeBehaviour : MonoBehaviour {
     }
 	
 	void Update () {
-        if (!MasterBehaviour.isPause && !MasterBehaviour.isFinish)
+        if (MasterBehaviour.isInitGame && !MasterBehaviour.isPause && !MasterBehaviour.isFinish)
         {
             move();
         }

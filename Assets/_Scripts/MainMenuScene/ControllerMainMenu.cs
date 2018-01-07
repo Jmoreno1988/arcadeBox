@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using UnityEngine.SceneManagement;
 
 public class ControllerMainMenu : MonoBehaviour {
     
@@ -40,6 +41,17 @@ public class ControllerMainMenu : MonoBehaviour {
             case "left":
 
                 break;
+        }
+    }
+
+    public void playGame()
+    {
+        switch(names[actualDir])
+        {
+            case "Snake":
+                SceneManager.LoadScene("snakeScene", LoadSceneMode.Single);
+                break;
+            
         }
     }
 }

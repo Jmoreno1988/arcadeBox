@@ -9,7 +9,7 @@ public class MenuPause : MonoBehaviour {
     void Start () {
         menuPause = GetComponent<CanvasGroup>();
 
-        hide();
+        //hide();
     }
 	
 	// Update is called once per frame
