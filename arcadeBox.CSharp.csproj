@@ -65,6 +65,12 @@
   <ItemGroup>
     <Compile Include="Assets\Static Code\Helper.cs" />
     <Compile Include="Assets\Static Code\MessageFromInt.cs" />
+    <Compile Include="Assets\_Scripts\Arkanoid\Ball.cs" />
+    <Compile Include="Assets\_Scripts\Arkanoid\Bricks.cs" />
+    <Compile Include="Assets\_Scripts\Arkanoid\DeadZone.cs" />
+    <Compile Include="Assets\_Scripts\Arkanoid\GM.cs" />
+    <Compile Include="Assets\_Scripts\Arkanoid\Paddle.cs" />
+    <Compile Include="Assets\_Scripts\Arkanoid\TimedDestroy.cs" />
     <Compile Include="Assets\_Scripts\MainMenuScene\Camera.cs" />
     <Compile Include="Assets\_Scripts\MainMenuScene\ControllerMainMenu.cs" />
     <Compile Include="Assets\_Scripts\MainMenuScene\UI\ButtonNextGame.cs" />
