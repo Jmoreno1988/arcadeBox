@@ -89,8 +89,10 @@
     <Compile Include="Assets\_Scripts\SnakeScene\UI\ButtonMenuPauseResume.cs" />
     <Compile Include="Assets\_Scripts\SnakeScene\UI\ButtonRight.cs" />
     <Compile Include="Assets\_Scripts\SnakeScene\UI\MainMenu\ButtonSnake.cs" />
+    <Compile Include="Assets\_Scripts\SnakeScene\UI\MenuGameOver.cs" />
     <Compile Include="Assets\_Scripts\SnakeScene\UI\MenuPause.cs" />
     <Compile Include="Assets\_Scripts\SnakeScene\UI\MenuReady.cs" />
+    <Compile Include="Assets\_Scripts\SnakeScene\UI\TextFinalScore.cs" />
     <Compile Include="Assets\_Scripts\SnakeScene\UI\TextReady.cs" />
     <Compile Include="Assets\_Scripts\SnakeScene\UI\TextScore.cs" />
     <Compile Include="Assets\_Scripts\SnakeScene\Weather\CloudBehaviour.cs" />

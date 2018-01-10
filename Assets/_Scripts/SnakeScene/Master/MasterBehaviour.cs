@@ -12,6 +12,7 @@ public class MasterBehaviour : MonoBehaviour {
     public static bool isPause;
     public static bool isInitGame;
     public MenuPause menuPause;
+    public MenuGameOver menuGameOver;
     public MenuReady readyGo;
     private float lastTime;
 
@@ -22,6 +23,7 @@ public class MasterBehaviour : MonoBehaviour {
         score = 0;
         Snake = GameObject.Find("Snake").GetComponent<SnakeBehaviour>();
         menuPause = GameObject.Find("MenuPause").GetComponent<MenuPause>();
+        menuGameOver = GameObject.Find("MenuGameOver").GetComponent<MenuGameOver>();
         readyGo = GameObject.Find("ReadyGo").GetComponent<MenuReady>();
 
         generateFood();
@@ -41,15 +43,10 @@ public class MasterBehaviour : MonoBehaviour {
         }
 
         if(!isInitGame)
-        {
             showReadyGoPanel();
-        } 
 
         if(isFinish)
-        {
-            showResultPanel();
-        }
-
+            Invoke("showResultPanel", 1);
 	}
 
     public void generateFood()
@@ -79,7 +76,6 @@ public class MasterBehaviour : MonoBehaviour {
                     randY = Helper.GetRandomNumber(1, 18);
                     isPosGridClear = false;
                 }
-
             }
         } while (!isPosGridClear);
         
@@ -87,16 +83,15 @@ public class MasterBehaviour : MonoBehaviour {
         Food.moveToCellGrid((int)randX, (int)randY);
     }
 
-
-    // UI METHODS
-    public void initGame()
+    public void turnSnake(string newDirection)
     {
-        
+        Snake.newDirection(newDirection);
     }
 
+    // UI METHODS
     public void resetGame()
     {
-        Start();
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
 
     public void goToMainMenu()
@@ -114,11 +109,7 @@ public class MasterBehaviour : MonoBehaviour {
         MasterBehaviour.isPause = false;
         menuPause.hide();
     }
-
-    public void turnSnake(string newDirection)
-    {
-        Snake.newDirection(newDirection);
-    }
+    
 
 
     // PRIVATE METHODS
@@ -156,6 +147,7 @@ public class MasterBehaviour : MonoBehaviour {
 
     private void showResultPanel()
     {
-        
+        TextFinalScore.score = score * 10;
+        menuGameOver.show();
     }
 }

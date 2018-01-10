@@ -4,18 +4,10 @@ using System.Collections;
 public class MenuPause : MonoBehaviour {
 
     private CanvasGroup menuPause;
-
-    // Use this for initialization
+    
     void Start () {
         menuPause = GetComponent<CanvasGroup>();
-
-        //hide();
     }
-	
-	// Update is called once per frame
-	void Update () {
-	
-	}
 
     public void hide()
     {

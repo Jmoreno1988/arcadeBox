@@ -30,12 +30,7 @@ public class SnakeBehaviour : MonoBehaviour {
 	
 	void Update () {
         if (MasterBehaviour.isInitGame && !MasterBehaviour.isPause && !MasterBehaviour.isFinish)
-        {
-            if (!isCollider())
-                move();
-            else
-                MasterBehaviour.isFinish = true;
-        }
+            move();
     }
 
     void moveToCellGrid(int x, int y)
@@ -61,45 +56,52 @@ public class SnakeBehaviour : MonoBehaviour {
 
         if (lastTimeMove > 0.1F)
         {
-            // Head move
-            switch (direction)
+            if (!isCollider())
             {
-                case 1: // UP
-                    newPosGrid = new int[] { actualPosGrid[0], actualPosGrid[1] - 1 };
-                    moveToCellGrid(newPosGrid[0], newPosGrid[1]);
-                    break;
+                // Head move
+                switch (direction)
+                {
+                    case 1: // UP
+                        newPosGrid = new int[] { actualPosGrid[0], actualPosGrid[1] - 1 };
+                        moveToCellGrid(newPosGrid[0], newPosGrid[1]);
+                        break;
 
-                case 2: // RIGHT
-                    newPosGrid = new int[] { actualPosGrid[0] + 1, actualPosGrid[1] };
-                    moveToCellGrid(newPosGrid[0], newPosGrid[1]);
-                    break;
+                    case 2: // RIGHT
+                        newPosGrid = new int[] { actualPosGrid[0] + 1, actualPosGrid[1] };
+                        moveToCellGrid(newPosGrid[0], newPosGrid[1]);
+                        break;
 
-                case 3: // DOWN
-                    newPosGrid = new int[] { actualPosGrid[0], actualPosGrid[1] + 1 };
-                    moveToCellGrid(newPosGrid[0], newPosGrid[1]);
-                    break;
+                    case 3: // DOWN
+                        newPosGrid = new int[] { actualPosGrid[0], actualPosGrid[1] + 1 };
+                        moveToCellGrid(newPosGrid[0], newPosGrid[1]);
+                        break;
 
-                case 4: // LEFT
-                    newPosGrid = new int[] { actualPosGrid[0] - 1, actualPosGrid[1] };
-                    moveToCellGrid(newPosGrid[0], newPosGrid[1]);
-                    break;
-            }
-            actualPosGrid = newPosGrid;
-            lastTimeMove = 0;
+                    case 4: // LEFT
+                        newPosGrid = new int[] { actualPosGrid[0] - 1, actualPosGrid[1] };
+                        moveToCellGrid(newPosGrid[0], newPosGrid[1]);
+                        break;
+                }
 
-            var auxPosHead = lastPosGrid;
+                actualPosGrid = newPosGrid;
+                lastTimeMove = 0;
 
-            // Body move
-            foreach (SnakeBody b in body)
+                var auxPosHead = lastPosGrid;
+
+                // Body move
+                foreach (SnakeBody b in body)
+                {
+                    var pos = b.getActualPosGrid();
+                    b.moveTo(auxPosHead[0], auxPosHead[1]);
+                    auxPosHead = pos;
+                }
+
+
+                lastPosGrid = actualPosGrid;
+            } else
             {
-                var pos = b.getActualPosGrid();
-                b.moveTo(auxPosHead[0], auxPosHead[1]);
-                auxPosHead = pos;
+                MasterBehaviour.isFinish = true;
             }
-           
-
-            lastPosGrid = actualPosGrid;
-        }
+        }    
 
         if (Input.GetKeyUp(KeyCode.RightArrow))
         {
