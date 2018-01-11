@@ -51,7 +51,12 @@ public class ControllerMainMenu : MonoBehaviour {
             case "Snake":
                 SceneManager.LoadScene("snakeScene", LoadSceneMode.Single);
                 break;
-            
+
+            case "Arkanoid":
+                Debug.Log(123);
+                SceneManager.LoadScene("ArkanoidScene", LoadSceneMode.Single);
+                break;
+
         }
     }
 }
