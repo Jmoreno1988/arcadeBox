@@ -1,4 +1,4 @@
 sceneSetups:
-- path: Assets/snakeScene.unity
+- path: Assets/Scenes/Snake/MenuSnake.unity
   isLoaded: 1
   isActive: 1
