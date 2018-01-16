@@ -109,7 +109,12 @@ public class MasterBehaviour : MonoBehaviour {
         MasterBehaviour.isPause = false;
         menuPause.hide();
     }
-    
+
+    public void goToListLevels()
+    {
+        SceneManager.LoadScene("MenuSnake", LoadSceneMode.Single);
+    }
+
 
 
     // PRIVATE METHODS

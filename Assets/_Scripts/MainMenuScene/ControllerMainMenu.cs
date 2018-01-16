@@ -49,11 +49,10 @@ public class ControllerMainMenu : MonoBehaviour {
         switch(names[actualDir])
         {
             case "Snake":
-                SceneManager.LoadScene("snakeScene", LoadSceneMode.Single);
+                SceneManager.LoadScene("MenuSnake", LoadSceneMode.Single);
                 break;
 
             case "Arkanoid":
-                Debug.Log(123);
                 SceneManager.LoadScene("ArkanoidScene", LoadSceneMode.Single);
                 break;
 

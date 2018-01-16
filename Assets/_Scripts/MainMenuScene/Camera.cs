@@ -7,4 +7,11 @@ public class Camera : MonoBehaviour {
     {
         transform.position = pos;
     }
+
+
+
+    public void Lerp(Vector3 newPos, float time)
+    {
+        transform.position = Vector3.Lerp(this.transform.position, newPos, time);
+    }
 }

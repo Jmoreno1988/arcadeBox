@@ -140,6 +140,34 @@ public class SnakeBehaviour : MonoBehaviour {
                 break;
         }
 
+        // Comprueba casillas vacias
+        switch (direction)
+        {
+            case 1: // UP
+                if (GameObject.Find("c(" + actualPosGrid[0] + "," + (actualPosGrid[1] - 1) + ")") == null)
+                    return true;
+                break;
+
+            case 2: // RIGHT
+                if (GameObject.Find("c(" + (actualPosGrid[0] + 1) + "," + (actualPosGrid[1]) + ")") == null)
+                {
+
+                    return true;
+                }
+                break;
+
+            case 3: // DOWN
+                if (GameObject.Find("c(" + actualPosGrid[0] + "," + (actualPosGrid[1] + 1) + ")") == null)
+                    return true;
+                break;
+
+            case 4: // LEFT
+                if (GameObject.Find("c(" + (actualPosGrid[0] - 1) + "," + (actualPosGrid[1]) + ")") == null)
+                    return true;
+                break;
+        }
+
+
         // Comprobacion si se choca consigo mismo
         foreach (SnakeBody b in body)
         {
