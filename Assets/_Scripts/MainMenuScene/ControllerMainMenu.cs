@@ -53,7 +53,7 @@ public class ControllerMainMenu : MonoBehaviour {
                 break;
 
             case "Arkanoid":
-                SceneManager.LoadScene("ArkanoidScene", LoadSceneMode.Single);
+                SceneManager.LoadScene("arkanoid1", LoadSceneMode.Single);
                 break;
 
         }

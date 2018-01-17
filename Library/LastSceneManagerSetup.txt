@@ -1,4 +1,4 @@
 sceneSetups:
-- path: Assets/Scenes/Arkanoid/arkanoid1.unity
+- path: Assets/MainMenu.unity
   isLoaded: 1
   isActive: 1
