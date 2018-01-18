@@ -1,44 +1,52 @@
 ﻿using UnityEngine;
 using System.Collections;
 using UnityEngine.UI;
+using System.Collections.Generic;
+using UnityEngine.SceneManagement;
 
 public class GM : MonoBehaviour
 {
+    private int lives = 3;
+    private ArrayList levels;
+    private int actualLevel;
 
-    public int lives = 3;
-    public int bricks = 20;
+
     public float resetDelay = 1f;
     public Text livesText;
     public GameObject gameOver;
     public GameObject youWon;
     public GameObject bricksPrefab;
-    public GameObject paddle;
+    //public GameObject paddle;
     public GameObject deathParticles;
-    public static GM instance = null;
 
     private GameObject clonePaddle;
 
     // Use this for initialization
     void Awake()
     {
-        if (instance == null)
-            instance = this;
-        else if (instance != this)
-            Destroy(gameObject);
-
         Setup();
+
+        levels = new ArrayList();
+        levels.Add(new Level("level1", 78));
+        levels.Add(new Level("level2", 111));
+        levels.Add(new Level("level3", 111));
+
+        actualLevel = 0;
 
     }
 
     public void Setup()
     {
-        clonePaddle = Instantiate(paddle, transform.position, Quaternion.identity) as GameObject;
-        Instantiate(bricksPrefab, transform.position, Quaternion.identity);
+        //clonePaddle = Instantiate(paddle, transform.position, Quaternion.identity) as GameObject;
+        //Instantiate(bricksPrefab, transform.position, Quaternion.identity);
     }
 
     void CheckGameOver()
     {
-        if (bricks < 1)
+        var level = ((Level)levels[actualLevel]);
+        var totalBricks = level.totalBricks;
+
+        if (totalBricks < 1)
         {
             youWon.SetActive(true);
             Time.timeScale = .25f;
@@ -57,7 +65,7 @@ public class GM : MonoBehaviour
     void Reset()
     {
         Time.timeScale = 1f;
-        Application.LoadLevel(Application.loadedLevel);
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
 
     public void LoseLife()
@@ -72,12 +80,15 @@ public class GM : MonoBehaviour
 
     void SetupPaddle()
     {
-        clonePaddle = Instantiate(paddle, transform.position, Quaternion.identity) as GameObject;
+        //clonePaddle = Instantiate(paddle, transform.position, Quaternion.identity) as GameObject;
     }
 
     public void DestroyBrick()
     {
-        bricks--;
+        var level = ((Level)levels[actualLevel]);
+        level.totalBricks--;
         CheckGameOver();
+        Debug.Log(level.totalBricks);
+        
     }
 }

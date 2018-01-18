@@ -12,9 +12,7 @@ public class Ball : MonoBehaviour
 
     void Awake()
     {
-
         rb = GetComponent<Rigidbody>();
-
     }
 
     void Update()
