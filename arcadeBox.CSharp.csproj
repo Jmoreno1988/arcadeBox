@@ -13,13 +13,11 @@
     <TargetFrameworkIdentifier>.NETFramework</TargetFrameworkIdentifier>
     <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
     <TargetFrameworkProfile>Unity Subset v3.5</TargetFrameworkProfile>
-    <CompilerResponseFile>
-    </CompilerResponseFile>
+    <CompilerResponseFile></CompilerResponseFile>
     <UnityProjectType>Game:1</UnityProjectType>
     <UnityBuildTarget>StandaloneWindows:5</UnityBuildTarget>
     <UnityVersion>5.4.6f3</UnityVersion>
-    <RootNamespace>
-    </RootNamespace>
+    <RootNamespace></RootNamespace>
     <LangVersion Condition=" '$(VisualStudioVersion)' != '10.0' ">4</LangVersion>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
@@ -69,13 +67,14 @@
     <Compile Include="Assets\Static Code\MessageFromInt.cs" />
     <Compile Include="Assets\_Scripts\Arkanoid\Ball.cs" />
     <Compile Include="Assets\_Scripts\Arkanoid\Bricks.cs" />
-    <Compile Include="Assets\_Scripts\Arkanoid\DeadZone.cs" />
     <Compile Include="Assets\_Scripts\Arkanoid\GM.cs" />
     <Compile Include="Assets\_Scripts\Arkanoid\Level.cs" />
     <Compile Include="Assets\_Scripts\Arkanoid\Paddle.cs" />
-    <Compile Include="Assets\_Scripts\Arkanoid\TimedDestroy.cs" />
+    <Compile Include="Assets\_Scripts\Arkanoid\PowerUp.cs" />
     <Compile Include="Assets\_Scripts\Arkanoid\UI\bLeft.cs" />
     <Compile Include="Assets\_Scripts\Arkanoid\UI\bRight.cs" />
+    <Compile Include="Assets\_Scripts\Arkanoid\UI\tLives.cs" />
+    <Compile Include="Assets\_Scripts\Arkanoid\UI\tScore.cs" />
     <Compile Include="Assets\_Scripts\MainMenuScene\Camera.cs" />
     <Compile Include="Assets\_Scripts\MainMenuScene\ControllerMainMenu.cs" />
     <Compile Include="Assets\_Scripts\MainMenuScene\UI\ButtonNextGame.cs" />

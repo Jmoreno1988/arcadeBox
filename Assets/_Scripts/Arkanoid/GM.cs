@@ -6,39 +6,38 @@ using UnityEngine.SceneManagement;
 
 public class GM : MonoBehaviour
 {
-    private int lives = 3;
+    private int lives;
     private ArrayList levels;
     private int actualLevel;
+    private int score;
+    private Ball ball;
+    private ArrayList listPowerUps;
+
+    public int posDead;
 
 
     public float resetDelay = 1f;
-    public Text livesText;
     public GameObject gameOver;
     public GameObject youWon;
-    public GameObject bricksPrefab;
-    //public GameObject paddle;
-    public GameObject deathParticles;
 
-    private GameObject clonePaddle;
-
-    // Use this for initialization
     void Awake()
     {
-        Setup();
-
         levels = new ArrayList();
-        levels.Add(new Level("level1", 78));
-        levels.Add(new Level("level2", 111));
-        levels.Add(new Level("level3", 111));
+        levels.Add(new Level("level1", 78, new string[] {"velx2", "vel/2"}));
+        levels.Add(new Level("level2", 111, new string[] { }));
+        levels.Add(new Level("level3", 111, new string[] { }));
 
+        lives = 3;
         actualLevel = 0;
+        score = 0;
+        posDead = -22;
+        listPowerUps = new ArrayList();
 
-    }
+        tScore.score = score;
 
-    public void Setup()
-    {
-        //clonePaddle = Instantiate(paddle, transform.position, Quaternion.identity) as GameObject;
-        //Instantiate(bricksPrefab, transform.position, Quaternion.identity);
+        ball = GameObject.Find("Ball").GetComponent<Ball>();
+
+        generatePowerUps((Level)levels[0]);
     }
 
     void CheckGameOver()
@@ -55,7 +54,6 @@ public class GM : MonoBehaviour
 
         if (lives < 1)
         {
-            gameOver.SetActive(true);
             Time.timeScale = .25f;
             Invoke("Reset", resetDelay);
         }
@@ -68,27 +66,65 @@ public class GM : MonoBehaviour
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
 
-    public void LoseLife()
+    public void loseLife()
     {
         lives--;
-        livesText.text = "Lives: " + lives;
-        Instantiate(deathParticles, clonePaddle.transform.position, Quaternion.identity);
-        Destroy(clonePaddle);
-        Invoke("SetupPaddle", resetDelay);
+        tLives.lives = lives;
+        ball.reset();
         CheckGameOver();
-    }
-
-    void SetupPaddle()
-    {
-        //clonePaddle = Instantiate(paddle, transform.position, Quaternion.identity) as GameObject;
     }
 
     public void DestroyBrick()
     {
         var level = ((Level)levels[actualLevel]);
         level.totalBricks--;
+        score += 100;
+        tScore.score = score;
+
         CheckGameOver();
-        Debug.Log(level.totalBricks);
-        
+    }
+
+    // Cargar pantalla
+    // ===============
+    // Para pasar de pantalla 
+    // Se destruye el ultimo bloque
+    // Se cae una de las paredes laterales, luego la otra y finalmente el techo
+
+
+    // POWER UPS
+    // =========
+    // Son aleatorios
+    // Se sueltan cuando falten un nuemro x de bloques por romper.
+    // Se asignan tantos numeros como powerups
+    // Al romper un bloque se comprueba si toca soltar powerup
+    // Si toca se instancia en el lugar del bloque
+    // El powerup sera una pildora con gravedad que caera perpendicular a la pala
+    // Si la tabla lo toca se aplica el power up
+    
+    private void generatePowerUps(Level level)
+    {
+        /*
+        var pUps = level.powerUps;
+        var totalBricks = level.totalBricks;
+
+        for (int i = 0; i < pUps.Length; i++)
+        {
+            var contains = true;
+            do
+            {
+                int rand = (int)Helper.GetRandomNumber(0, totalBricks);
+
+                if (!listPowerUps.Contains(rand))
+                {
+                    listPowerUps.Add(rand);
+                    contains = false;
+                }
+
+            } while (contains);
+        }
+        */
+
+        for (int i = 0; i < level.powerUps.Length; i++)
+            listPowerUps.Add(i);
     }
 }
