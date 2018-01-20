@@ -4,7 +4,7 @@ using System.Collections;
 public class Ball : MonoBehaviour
 {
 
-    public float ballInitialVelocity = 600f;
+    public float ballInitialVelocity = 1600f;
 
     private GM GM;
     private Rigidbody rb;

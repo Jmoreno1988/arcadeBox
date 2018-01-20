@@ -12,6 +12,7 @@ public class GM : MonoBehaviour
     private int score;
     private Ball ball;
     private ArrayList listPowerUps;
+    private PowerUp powerUp;
 
     public int posDead;
 
@@ -23,7 +24,7 @@ public class GM : MonoBehaviour
     void Awake()
     {
         levels = new ArrayList();
-        levels.Add(new Level("level1", 78, new string[] {"velx2", "vel/2"}));
+        levels.Add(new Level("level1", 78, new string[] {"velx2", "vel-2"}));
         levels.Add(new Level("level2", 111, new string[] { }));
         levels.Add(new Level("level3", 111, new string[] { }));
 
@@ -74,14 +75,25 @@ public class GM : MonoBehaviour
         CheckGameOver();
     }
 
-    public void DestroyBrick()
+    public void DestroyBrick(Transform t)
     {
         var level = ((Level)levels[actualLevel]);
         level.totalBricks--;
         score += 100;
         tScore.score = score;
 
+        //Comprobamos si suleta powerUp
+        for (int i = 0; i < listPowerUps.Count; i++)
+            if ((int)listPowerUps[i] == level.totalBricks)
+                generatePowerup(level.powerUps[i], t);
+
         CheckGameOver();
+    }
+
+    private void generatePowerup(string name, Transform tBrick)
+    {
+        GameObject pU = (GameObject)Instantiate(Resources.Load("powerUps/" + name));
+        pU.transform.position = tBrick.position;
     }
 
     // Cargar pantalla
@@ -100,7 +112,13 @@ public class GM : MonoBehaviour
     // Si toca se instancia en el lugar del bloque
     // El powerup sera una pildora con gravedad que caera perpendicular a la pala
     // Si la tabla lo toca se aplica el power up
-    
+
+
+    // TODO
+    // ====
+    // Velocidad de la pelota
+    // Velocidad de la pelota aumentar por rebote
+
     private void generatePowerUps(Level level)
     {
         /*
@@ -123,8 +141,12 @@ public class GM : MonoBehaviour
             } while (contains);
         }
         */
-
+        /*
         for (int i = 0; i < level.powerUps.Length; i++)
             listPowerUps.Add(i);
+            */
+
+        listPowerUps.Add(76);
+        listPowerUps.Add(77);
     }
 }
