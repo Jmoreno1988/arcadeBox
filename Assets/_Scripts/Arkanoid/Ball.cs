@@ -3,20 +3,24 @@ using System.Collections;
 
 public class Ball : MonoBehaviour
 {
-
-    public float ballInitialVelocity = 1600f;
-
     private GM GM;
     private Rigidbody rb;
     private bool ballInPlay;
     private Paddle paddle;
+    private float ballInitialVelocity;
+    private float ballVelocity;
+    private float ballMaxVelocity;
 
     void Awake()
     {
         rb = GetComponent<Rigidbody>();
         GM = GameObject.Find("GM").GetComponent<GM>();
         paddle = GameObject.Find("Paddle").GetComponent<Paddle>();
-    }
+
+        ballInitialVelocity = 800f;
+        ballMaxVelocity = 1400f;
+        ballVelocity = ballInitialVelocity;
+}
 
     void Update()
     {
@@ -45,5 +49,26 @@ public class Ball : MonoBehaviour
     public void  Destroy()
     {
         Destroy(gameObject);
+    }
+
+    public void speedUp(float vel)
+    {
+        if ((ballVelocity + vel) < ballMaxVelocity)
+            ballVelocity += vel;
+        else
+            ballVelocity = ballMaxVelocity;
+    }
+
+    public void speedDown(float vel)
+    {
+        if ((ballVelocity - vel) < ballInitialVelocity)
+            ballVelocity -= vel;
+        else
+            ballVelocity = ballInitialVelocity;
+    }
+
+    public Rigidbody getRigidBody()
+    {
+        return rb;
     }
 }

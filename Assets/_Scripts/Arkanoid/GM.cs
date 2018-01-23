@@ -24,7 +24,7 @@ public class GM : MonoBehaviour
     void Awake()
     {
         levels = new ArrayList();
-        levels.Add(new Level("level1", 78, new string[] {"velx2", "vel-2"}));
+        levels.Add(new Level("level1", 78, new string[] {"velMax", "velMin"}));
         levels.Add(new Level("level2", 111, new string[] { }));
         levels.Add(new Level("level3", 111, new string[] { }));
 
@@ -87,6 +87,9 @@ public class GM : MonoBehaviour
             if ((int)listPowerUps[i] == level.totalBricks)
                 generatePowerup(level.powerUps[i], t);
 
+        // Aumentamos velocidad de la pelota
+        ball.speedUp(100);
+
         CheckGameOver();
     }
 
@@ -98,9 +101,13 @@ public class GM : MonoBehaviour
 
     // Cargar pantalla
     // ===============
-    // Para pasar de pantalla 
+    // Se muestra un cartelon con nivel del juego/niveles del juego y vidas.
+    // Se carga la pantalla (se mueve la estructura y resetea bola y pala)
+    // Se quita cartelon
+    // Jugar
     // Se destruye el ultimo bloque
-    // Se cae una de las paredes laterales, luego la otra y finalmente el techo
+    // Delay()
+    // Se vuelve a mostraer el cartelon
 
 
     // POWER UPS
@@ -112,6 +119,16 @@ public class GM : MonoBehaviour
     // Si toca se instancia en el lugar del bloque
     // El powerup sera una pildora con gravedad que caera perpendicular a la pala
     // Si la tabla lo toca se aplica el power up
+    // No colisiona con la pelota
+    // Solo uno a la vez
+
+    
+    // PELOTA
+    // ======
+    // Distinguir entre las tres partes de la pala
+    // Que cada parte de la pala devuelva la bola con diferente angulo
+    // Que el extremo derecho sume 20º y el izquierdo reste 20º?? con maximos y minimos??
+
 
 
     // TODO
@@ -149,4 +166,18 @@ public class GM : MonoBehaviour
         listPowerUps.Add(76);
         listPowerUps.Add(77);
     }
+
+    public void extraLive()
+    {
+            lives++;
+    }
 }
+
+// Otro juegos
+// ===========
+// Pacman 0,99
+// Super Pang
+// Tetris
+// Asteroids
+// Galaga
+// 
