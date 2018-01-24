@@ -17,8 +17,8 @@ public class Ball : MonoBehaviour
         GM = GameObject.Find("GM").GetComponent<GM>();
         paddle = GameObject.Find("Paddle").GetComponent<Paddle>();
 
-        ballInitialVelocity = 800f;
-        ballMaxVelocity = 1400f;
+        ballInitialVelocity = 18;
+        ballMaxVelocity = 30;
         ballVelocity = ballInitialVelocity;
 }
 
@@ -29,7 +29,8 @@ public class Ball : MonoBehaviour
             transform.parent = null;
             ballInPlay = true;
             rb.isKinematic = false;
-            rb.AddForce(new Vector3(ballInitialVelocity, ballInitialVelocity, 0));
+            //rb.AddForce(new Vector3(ballInitialVelocity, ballInitialVelocity, 0));
+            rb.velocity = new Vector3(1 * ballInitialVelocity, 1 * ballInitialVelocity, 0);
         }
         
         if(transform.position.y < GM.posDead)
@@ -43,7 +44,8 @@ public class Ball : MonoBehaviour
         ballInPlay = false;
         rb.isKinematic = true;
         transform.parent = paddle.transform;
-        transform.position = new Vector3(paddle.transform.position.x, -13.5f, 0);
+        transform.position = new Vector3(paddle.transform.position.x, -12.47f, 0);
+        ballVelocity = ballInitialVelocity;
     }
 
     public void  Destroy()
@@ -70,5 +72,10 @@ public class Ball : MonoBehaviour
     public Rigidbody getRigidBody()
     {
         return rb;
+    }
+
+    public float getSpeed()
+    {
+        return ballVelocity;
     }
 }

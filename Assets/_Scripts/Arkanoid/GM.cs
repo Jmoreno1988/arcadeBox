@@ -88,7 +88,7 @@ public class GM : MonoBehaviour
                 generatePowerup(level.powerUps[i], t);
 
         // Aumentamos velocidad de la pelota
-        ball.speedUp(100);
+        ball.speedUp(0.3f);
 
         CheckGameOver();
     }

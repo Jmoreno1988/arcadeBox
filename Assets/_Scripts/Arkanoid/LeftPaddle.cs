@@ -14,7 +14,7 @@ public class LeftPaddle : MonoBehaviour {
     {
         if (col.gameObject.name == "Ball")
         {
-            paddle.collisionBall("left");
+            //paddle.collisionBall("left");
         }
     }
 }

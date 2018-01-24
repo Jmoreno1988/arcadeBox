@@ -25,15 +25,41 @@ public class Paddle : MonoBehaviour
         transform.position = playerPos;
     }
 
-    public void collisionBall(string posPaddle)
+    public void collisionBall(int posPaddle)
     {
-        float z = 15;
+        float z = 0;
         Rigidbody rb  = ball.getRigidBody();
-        Quaternion rotation = Quaternion.Euler(0, 0, z); ;
+
+        if (posPaddle == 1) z = 0;
+        if (posPaddle == 2) z = -11.25f;
+        if (posPaddle == 3) z = -22.5f;
+        if (posPaddle == 4) z = -33.75f;
+        if (posPaddle == 5) z = -45f;
+        if (posPaddle == 6) z = -56.25f;
+        if (posPaddle == 7) z = -67.5f;
+        if (posPaddle == 8) z = -78.75f;
+        if (posPaddle == 9) z = -90;
+
+        Quaternion rotation = Quaternion.Euler(0, 0, z);
         
-        if (posPaddle == "left") z = 15;
-        if (posPaddle == "right") z = -15;
-        
+        // La ponemos en un angulo de -45º
+        rb.velocity = new Vector3(- 1* ball.getSpeed(), 1 * ball.getSpeed(), 0);
+        Debug.Log(ball.getSpeed());
         rb.velocity = rotation * rb.velocity;
     }
 }
+
+// Angulos rebote
+// ==============
+//  1  -45    - 0
+//  2  -33.75 - 11.25
+//  3  -22.5  - 22.5
+//  4  -11.25 - 33.75
+//  5   0     - 45
+//  6   11.25 - 56.25
+//  7   22.5  - 67.5
+//  8   33.75 - 78.75
+//  9   45    - 90
+
+
+
