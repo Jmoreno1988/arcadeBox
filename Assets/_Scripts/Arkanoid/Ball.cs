@@ -55,18 +55,27 @@ public class Ball : MonoBehaviour
 
     public void speedUp(float vel)
     {
+        var uVector = Vector3.Normalize(rb.velocity);  // vector unitario
+
         if ((ballVelocity + vel) < ballMaxVelocity)
             ballVelocity += vel;
         else
             ballVelocity = ballMaxVelocity;
+        
+        rb.velocity = new Vector3(uVector.x * ballVelocity, uVector.y * ballVelocity, 0);
     }
 
     public void speedDown(float vel)
     {
-        if ((ballVelocity - vel) < ballInitialVelocity)
+        var uVector = Vector3.Normalize(rb.velocity); // vector unitario
+
+        if ((ballVelocity - vel) > ballInitialVelocity)
             ballVelocity -= vel;
         else
             ballVelocity = ballInitialVelocity;
+
+        rb.velocity = new Vector3(uVector.x * ballVelocity, uVector.y * ballVelocity, 0);
+        
     }
 
     public Rigidbody getRigidBody()

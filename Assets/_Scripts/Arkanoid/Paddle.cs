@@ -44,7 +44,6 @@ public class Paddle : MonoBehaviour
         
         // La ponemos en un angulo de -45º
         rb.velocity = new Vector3(- 1* ball.getSpeed(), 1 * ball.getSpeed(), 0);
-        Debug.Log(ball.getSpeed());
         rb.velocity = rotation * rb.velocity;
     }
 }

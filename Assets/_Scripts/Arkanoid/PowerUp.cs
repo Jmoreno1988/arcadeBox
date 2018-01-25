@@ -5,23 +5,20 @@ public class PowerUp : MonoBehaviour {
 
     private GM GM;
     private Ball ball;
-    private string type;
+    public string type;
 
     void Start () {
         GM = GameObject.Find("GM").GetComponent<GM>();
-        ball = GameObject.Find("Ball").GetComponent<Ball>();
-
-        // Para ignorar las colisiones con la pelota, no funciona!!!!!!!!!
-        Physics.IgnoreCollision(ball.GetComponent<Collider>(), GetComponent<Collider>());
+        ball = GameObject.Find("Ball").GetComponent<Ball>();        
     }
 
 	void Update () {
-	
-	}
+        
+    }
 
     void OnCollisionEnter(Collision col)
     {
-        if(col.gameObject.name == "Paddle")
+        if (col.gameObject.name.Contains("Paddle"))
         {
             applyPowerUp();
             Destroy(gameObject);
@@ -30,9 +27,10 @@ public class PowerUp : MonoBehaviour {
 
     private void applyPowerUp()
     {
-        switch(type)
+        switch (type)
         {
             case "velMax":
+                Debug.Log("asdasdasdasd");
                 ball.speedUp(1200);
                 break;
 

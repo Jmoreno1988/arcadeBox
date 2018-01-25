@@ -88,7 +88,7 @@ public class GM : MonoBehaviour
                 generatePowerup(level.powerUps[i], t);
 
         // Aumentamos velocidad de la pelota
-        ball.speedUp(0.3f);
+        ball.speedUp(0.5f);
 
         CheckGameOver();
     }
@@ -121,20 +121,24 @@ public class GM : MonoBehaviour
     // Si la tabla lo toca se aplica el power up
     // No colisiona con la pelota
     // Solo uno a la vez
+    // Types:
+    //      - velMin
+    //      - velMax
+    //      - live up
+    //      - expand
+    //      - break
+    //      - mul
 
-    
+
+
     // PELOTA
     // ======
     // Distinguir entre las tres partes de la pala
     // Que cada parte de la pala devuelva la bola con diferente angulo
     // Que el extremo derecho sume 20º y el izquierdo reste 20º?? con maximos y minimos??
-
-
-
-    // TODO
-    // ====
-    // Velocidad de la pelota
-    // Velocidad de la pelota aumentar por rebote
+    // Para poder aumnetar de velocidad por bloqueroto:
+    //  - Obtener y normalizar el vector velocidad -> Vector3.Normalize()
+    //  - Scalar ese vector unitario con la aceleracion deseada
 
     private void generatePowerUps(Level level)
     {
@@ -164,7 +168,7 @@ public class GM : MonoBehaviour
             */
 
         listPowerUps.Add(76);
-        listPowerUps.Add(77);
+        listPowerUps.Add(74);
     }
 
     public void extraLive()
@@ -176,8 +180,7 @@ public class GM : MonoBehaviour
 // Otro juegos
 // ===========
 // Pacman 0,99
-// Super Pang
+// Super Pang 
 // Tetris
 // Asteroids
 // Galaga
-// 
